@@ -10,4 +10,4 @@ RUN chmod +x /usr/local/bin/* && \
 ENV HOME /home/nobody
 ENV LANG en_GB.UTF-8
 
-ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisor.conf", "-n"]
+ENTRYPOINT ["/usr/local/bin/supervisord-run"]

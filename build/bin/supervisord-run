@@ -1,0 +1,21 @@
+#!/bin/bash
+############################################################################
+# Run the supervisord process with the pid-file: /var/run/supervisord.pid #
+#--------------------------------------------------------------------------#
+# Maintainer: Mads Broen Nielsen                                           #
+############################################################################
+
+set -e
+
+log=/var/log/supervisord.log
+pid=/var/run/supervisord.pid
+
+if [ ! -f $pid ]; then
+  echo "[info] Starting Supervisor..." | ts '%Y-%m-%d %H:%M:%.S'
+  exec /usr/bin/supervisord \
+          -c /etc/supervisor.conf \
+          -j $pid \
+          -n
+else
+  echo "[warn] Supervisor Running with pid `cat $pid`..." | ts '%Y-%m-%d %H:%M:%.S'
+fi

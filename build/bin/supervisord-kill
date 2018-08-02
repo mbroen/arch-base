@@ -1,0 +1,10 @@
+#!/bin/bash
+############################################################################
+# Kill the supervisord process with the pid-file: /var/run/supervisord.pid #
+#--------------------------------------------------------------------------#
+# Maintainer: Mads Broen Nielsen                                           #
+############################################################################
+
+set -e
+
+kill -QUIT `cat /var/run/supervisord.pid`

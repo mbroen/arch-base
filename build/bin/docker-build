@@ -1,0 +1,22 @@
+#!/bin/bash
+##############################################
+# Execute all '.sh' files in /root directory #
+# Execute post install cleanup               #
+#--------------------------------------------#
+# Maintainer: Mads Broen Nielsen             #
+##############################################
+
+set -e
+
+pushd /root/
+for script in `ls | egrep '[0-9]{2}.*\.sh'`; do
+  /bin/bash `readlink -f ${script}`
+done
+popd
+
+yes|pacman -Scc
+rm -rf /usr/share/locale/*
+rm -rf /usr/share/man/*
+rm -rf /usr/share/gtk-doc/*
+rm -rf /root/*
+rm -rf /tmp/*

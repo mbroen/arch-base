@@ -18,4 +18,5 @@ useradd -m $AUR_USER
 # Set user password to blank
 echo "${AUR_USER}:" | chpasswd -e
 
+mkdir -p /etc/sudoers.d/
 echo "$AUR_USER      ALL = NOPASSWD: ALL" >> /etc/sudoers.d/aur

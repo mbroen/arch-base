@@ -41,10 +41,11 @@ grep -v usbutils | \
 grep -v xfsprogs) \
  --noconfirm --needed
 
-pacman -S git awk sed supervisor vi openssl moreutils --noconfirm --needed
+pacman -S git awk sed supervisor vi openssl moreutils sudo binutils --noconfirm --needed
 
-
-#curl --connect-timeout 5 --max-time 600 --retry 5 --retry-delay 0 --retry-max-time 60 -o /tmp/tini_release_tag -L https://github.com/krallin/tini/releases
-#tini_release_tag=$(cat /tmp/tini_release_tag | grep -P -o -m 1 '(?<=/krallin/tini/releases/tag/)[^"]+')
-#curl --connect-timeout 5 --max-time 600 --retry 5 --retry-delay 0 --retry-max-time 60 -o /usr/bin/tini -L "https://github.com/krallin/tini/releases/download/${tini_release_tag}/tini-amd64" && chmod +x /usr/bin/tini
-
+su aur <<EOF
+cd /tmp
+git clone https://aur.archlinux.org/yay-bin.git yay
+cd yay
+makepkg -si --noconfirm
+EOF

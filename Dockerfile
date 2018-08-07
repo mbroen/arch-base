@@ -1,4 +1,4 @@
-FROM base/archlinux
+FROM base/devel
 
 ADD build/*.sh /root/
 ADD build/supervisor.conf /etc/supervisor.conf
